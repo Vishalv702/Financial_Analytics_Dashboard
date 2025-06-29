@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module":  "CommonJS",                           // Better compatibility with `import/export`
+    "moduleResolution": "Node",                   // Ensures correct resolution of modules
+    "allowJs": false,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

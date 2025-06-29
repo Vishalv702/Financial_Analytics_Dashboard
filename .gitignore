@@ -1,0 +1,51 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# dotenv environment variables
+.env
+.env.*.local
+.env.production
+.env.development
+.env.test
+
+# Build output
+dist/
+build/
+client/dist/
+server/dist/
+out/
+
+# TypeScript compiled output
+*.tsbuildinfo
+
+# Vite cache
+.vite/
+
+# Vercel/Netlify
+.vercel/
+.netlify/
+
+# IDE folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Others
+coverage/
+tsconfig.tsbuildinfo
+*.local
+*.cache
