@@ -15,7 +15,7 @@ const app: Application = express();
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://financial-analytics-dashboard-0s3t.onrender.com/',
+  origin: 'https://financial-analytics-dashboard-1.onrender.com/',
   credentials: true,
 }));
 
