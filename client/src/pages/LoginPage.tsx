@@ -11,7 +11,6 @@ import {
   Tabs,
   Tab,
 } from '@mui/material';
-import axios from 'axios';
 
 const LoginPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
