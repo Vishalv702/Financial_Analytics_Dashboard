@@ -3,10 +3,9 @@ import axios from 'axios';
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
-  withCredentials: true, // Send cookies with every request
+  withCredentials: true, 
 });
 
-// Optional: Add interceptor for global error handling
 axiosInstance.interceptors.response.use(
   response => response,
   error => {

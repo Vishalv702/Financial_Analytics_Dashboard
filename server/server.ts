@@ -15,15 +15,13 @@ const app: Application = express();
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://financial-analytics-dashboard-0s3t.onrender.com/',
   credentials: true,
 }));
 
 app.use(express.json());
 
 // API Routes
-
-
 app.use('/api', routes);
 app.get('/', (_req: Request, res: Response): void => {res.send('API Running 🚀');});
 
