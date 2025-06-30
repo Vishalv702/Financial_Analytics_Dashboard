@@ -5,6 +5,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import connectDB from './config/database';
 import routes from './routes/index';
+import { handleErrors, handleNotFound } from './middleware/errorHandlers';
 dotenv.config();
 
 const PORT: number = parseInt(process.env.PORT || '3000', 10);
@@ -25,6 +26,9 @@ app.use(express.json());
 
 app.use('/api', routes);
 app.get('/', (_req: Request, res: Response): void => {res.send('API Running 🚀');});
+
+app.use(handleNotFound);
+app.use(handleErrors);
 
 // start server
 const startServer = async (): Promise<void> => {

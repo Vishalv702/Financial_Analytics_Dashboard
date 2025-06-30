@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import Transaction from '../models/Transaction';
 import { Request, Response, NextFunction } from 'express';
-export const transactionsMiddleware = async (req:Request, res:Response, next:NextFunction) => {
+export const transactionsMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const {
       category,
@@ -32,8 +32,18 @@ export const transactionsMiddleware = async (req:Request, res:Response, next:Nex
 
     if (from || to) {
       query.date = {};
-      if (from) query.date.$gte = new Date(from as string);
-      if (to) query.date.$lte = new Date(to as string);
+
+      if (from) {
+        const fromStr = String(from);
+        query.date.$gte = new Date(fromStr);
+      }
+
+      if (to) {
+        const toStr = String(to);
+        const toDate = new Date(toStr);
+        toDate.setDate(toDate.getDate() + 1);
+        query.date.$lt = toDate;
+      }
     }
 
     const sort: any = { [sortBy as string]: order === 'asc' ? 1 : -1 };
@@ -43,6 +53,7 @@ export const transactionsMiddleware = async (req:Request, res:Response, next:Nex
       .sort(sort)
       .skip((+page - 1) * +limit)
       .limit(+limit);
+
     res.json({ total, data });
   } catch (err) {
     console.error('Transaction Fetch Error:', err);
