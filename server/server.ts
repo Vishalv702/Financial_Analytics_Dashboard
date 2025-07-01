@@ -14,11 +14,19 @@ const app: Application = express();
 // middlewares
 app.use(cookieParser());
 
+// setup CORS
+const allowedOrigins = process.env.CORS_ORIGINS?.split(',') || [];
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://financial-analytics-dashboard-1.onrender.com'],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed for this origin'));
+    }
+  },
   credentials: true,
 }));
-
 
 app.use(express.json());
 
